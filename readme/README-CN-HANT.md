@@ -1,14 +1,18 @@
+---
+description: "better-theme —— 給 AI Agent 用的前端設計 Skill：配色 / 圓角 / 文案 / 動效 / 無障礙，專治生成式模板病。"
+---
+
 # AI-Skills: better-theme
 
 ## Language / 语言
 
-| Language | File |
-| :--- | :--- |
-| English | [README-EN.md](README-EN.md) |
-| 汉语（简体） | [README.md](../README.md) |
-| 漢語（繁體） | **README-CN-HANT.md**（當前） |
-| 日本語 | [README-JP.md](README-JP.md) |
-| español | [README-ES.md](README-ES.md) |
+| Language | File                         |
+| :------- | :--------------------------- |
+| English  | [README-EN.md](README-EN.md) |
+| 汉语（简体）   | [README.md](../README.md)    |
+| 漢語（繁體）   | **README-CN-HANT.md**（當前）    |
+| 日本語      | [README-JP.md](README-JP.md) |
+| español  | [README-ES.md](README-ES.md) |
 
 ## 導語
 

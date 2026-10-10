@@ -1,14 +1,18 @@
+---
+description: "better-theme — a front-end design Skill for AI agents: color, radius, copywriting, motion and accessibility. It exists to cure template disease."
+---
+
 # AI-Skills: better-theme
 
 ## Language / 语言
 
-| Language | File |
-| :--- | :--- |
-| English | **README-EN.md** (current) |
-| 汉语（简体） | [README.md](../README.md) |
-| 漢語（繁體） | [README-CN-HANT.md](README-CN-HANT.md) |
-| 日本語 | [README-JP.md](README-JP.md) |
-| español | [README-ES.md](README-ES.md) |
+| Language | File                                   |
+| :------- | :------------------------------------- |
+| English  | **README-EN.md** (current)             |
+| 汉语（简体）   | [README.md](../README.md)              |
+| 漢語（繁體）   | [README-CN-HANT.md](README-CN-HANT.md) |
+| 日本語      | [README-JP.md](README-JP.md)           |
+| español  | [README-ES.md](README-ES.md)           |
 
 ## Intro
 

@@ -1,14 +1,19 @@
+---
+description: "better-theme —— 给 AI Agent 用的前端设计 Skill：配色 / 圆角 / 文案 / 动效 / 可访问性，专治生成式模板病。"
+---
+
+
 # AI-Skills: better-theme
 
 ## Language / 语言
 
-| Language | File |
-| :--- | :--- |
-| English | [README-EN.md](readme/README-EN.md) |
-| 汉语（简体） | **README.md**（当前） |
-| 漢語（繁體） | [README-CN-HANT.md](readme/README-CN-HANT.md) |
-| 日本語 | [README-JP.md](readme/README-JP.md) |
-| español | [README-ES.md](readme/README-ES.md) |
+| Language | File                                          |
+| :------- | :-------------------------------------------- |
+| English  | [README-EN.md](readme/README-EN.md)           |
+| 汉语（简体）   | **README.md**（当前）                             |
+| 漢語（繁體）   | [README-CN-HANT.md](readme/README-CN-HANT.md) |
+| 日本語      | [README-JP.md](readme/README-JP.md)           |
+| español  | [README-ES.md](readme/README-ES.md)           |
 
 ## 导语
 
@@ -67,10 +72,16 @@ Hero + 三卡片 / 全页机械居中 / 所有组件统一一个大圆角 ——
 
 ## 维护
 
-改完文档跑一遍检查，确保交叉引用没断、frontmatter 是合法 YAML、语言表齐全、换行符统一：
+改完文档跑一遍检查：交叉引用没断、frontmatter 是合法 YAML 且各语言属性一致、语言表齐全且对齐、换行符统一。
 
 ```bash
 python3 scripts/check-refs.py
+```
+
+语言表格式不齐时，让它自己对齐（各语言 README 的表格会统一成同一种对齐风格）：
+
+```bash
+python3 scripts/check-refs.py --fix
 ```
 
 改了内容要更新全局安装时，一条命令同步（`--dry-run` 可先看会改什么）：

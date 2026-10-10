@@ -1,14 +1,18 @@
+---
+description: "better-theme — AI Agent 向けのフロントエンドデザイン Skill：配色 / 角丸 / コピー / モーション / アクセシビリティ。生成テンプレート病を専門に治します。"
+---
+
 # AI-Skills: better-theme
 
 ## Language / 语言
 
-| Language | File |
-| :--- | :--- |
-| English | [README-EN.md](README-EN.md) |
-| 汉语（简体） | [README.md](../README.md) |
-| 漢語（繁體） | [README-CN-HANT.md](README-CN-HANT.md) |
-| 日本語 | **README-JP.md**（現在） |
-| español | [README-ES.md](README-ES.md) |
+| Language | File                                   |
+| :------- | :------------------------------------- |
+| English  | [README-EN.md](README-EN.md)           |
+| 汉语（简体）   | [README.md](../README.md)              |
+| 漢語（繁體）   | [README-CN-HANT.md](README-CN-HANT.md) |
+| 日本語      | **README-JP.md**（現在）                   |
+| español  | [README-ES.md](README-ES.md)           |
 
 ## はじめに
 
