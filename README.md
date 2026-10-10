@@ -24,7 +24,8 @@ better-theme/
 ├── asset/
 │   └── icon/                     # 600+ 离线 SVG 图标（阿里图标库整理）
 └── scripts/
-    └── check-refs.py             # 文档卫生检查（交叉引用 / frontmatter / 换行符 / 行尾空白）
+    ├── check-refs.py             # 文档卫生检查（交叉引用 / frontmatter / 换行符 / 行尾空白）
+    └── sync-global.sh            # 同步到全局 ~/.dsh/skills/better-theme
 ```
 
 **加载原则**：`SKILL.md` 是入口，`references/` 按需读。只加载当前任务真正需要的文件——纯配色任务不用读 `interaction.md`。
@@ -57,6 +58,12 @@ Hero + 三卡片 / 全页机械居中 / 所有组件统一一个大圆角 ——
 
 ```bash
 python3 scripts/check-refs.py
+```
+
+改了内容要更新全局安装时，一条命令同步（`--dry-run` 可先看会改什么）：
+
+```bash
+./scripts/sync-global.sh
 ```
 
 ## 约定
