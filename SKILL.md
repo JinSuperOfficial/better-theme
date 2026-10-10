@@ -1,14 +1,10 @@
 ---
-
 name: better-theme
-
-description: >
-为网页前端生成具有独特美学的设计方案，避免千篇一律的 SaaS 模板风格。
-Use when the user asks to build a web page, create a frontend,
-design a landing page, improve UI aesthetics, or says things like
-"make this look good", "design a website", "前端页面", "网页设计",
-"这个页面不好看", "帮我做一个网站".
-
+description: >-
+  为网页前端生成具有独特美学的设计方案，避免千篇一律的 SaaS 模板风格。
+  Use when the user asks to build a web page, create a frontend, design a landing page,
+  improve UI aesthetics, or says "make this look good", "design a website",
+  "前端页面", "网页设计", "这个页面不好看", "帮我做一个网站".
 ---
 
 > 附带资源，大量素材在 `/asset`

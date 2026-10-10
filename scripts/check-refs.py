@@ -10,6 +10,8 @@
    （依次按「引用者所在目录」「仓库根目录」「references/」「references/cases/」解析）
 2. 换行符：Markdown 一律 LF，发现 CRLF 报警
 3. 行尾空白与文件末尾多余空行
+4. YAML frontmatter：能否解析、name 是否 kebab-case、description 是否存在
+   （有 PyYAML 时做严格解析，没有时退化为关键字检查）
 
 退出码：0 全绿，1 有问题。
 """
@@ -19,6 +21,11 @@ from __future__ import annotations
 import re
 import sys
 from pathlib import Path
+
+try:
+    import yaml  # type: ignore
+except ImportError:  # 没有 PyYAML 也能跑，只是退化为关键字检查
+    yaml = None
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -31,6 +38,9 @@ MD_LINK = re.compile(r"\[[^\]]*\]\(([^)\s]+)\)")
 
 # 长得像仓库内文件引用的：以 .md 结尾，或 references/ 开头的路径
 PATH_LIKE = re.compile(r"^(?:\.{0,2}/)?(?:[\w./-]*/)?[\w.-]+\.md$")
+
+# frontmatter 里的技能名必须是 kebab-case
+KEBAB = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 def md_files() -> list[Path]:
     return sorted(
@@ -57,6 +67,37 @@ def check_refs(path: Path, text: str) -> list[str]:
     return problems
 
 
+def check_frontmatter(text: str) -> list[str]:
+    """校验 SKILL.md / 参考文档的 YAML frontmatter。"""
+    if not text.startswith("---\n"):
+        return []
+    parts = text.split("---\n", 2)
+    if len(parts) < 3:
+        return ["  frontmatter 没有闭合的 --- 分隔线"]
+    raw = parts[1]
+    if yaml is None:
+        problems = []
+        if not re.search(r"^name:\s*\S", raw, re.M):
+            problems.append("  frontmatter 缺少 name")
+        if not re.search(r"^description:\s*\S", raw, re.M):
+            problems.append("  frontmatter 缺少 description")
+        return problems
+    try:
+        data = yaml.safe_load(raw) or {}
+    except Exception as exc:  # noqa: BLE001
+        first = str(exc).splitlines()[0]
+        return [f"  frontmatter 不是合法 YAML：{type(exc).__name__} {first}"]
+    problems = []
+    name = data.get("name")
+    if not name:
+        problems.append("  frontmatter 缺少 name")
+    elif not KEBAB.match(str(name)):
+        problems.append(f"  name 不是 kebab-case：{name!r}")
+    if not data.get("description"):
+        problems.append("  frontmatter 缺少 description")
+    return problems
+
+
 def check_hygiene(path: Path, text: str) -> list[str]:
     rel = path.relative_to(ROOT)
     problems: list[str] = []
@@ -79,7 +120,11 @@ def main() -> int:
     files = md_files()
     for path in files:
         text = path.read_text(encoding="utf-8")
-        problems = check_refs(path, text) + check_hygiene(path, text)
+        problems = (
+            check_refs(path, text)
+            + check_hygiene(path, text)
+            + check_frontmatter(text)
+        )
         if problems:
             failed = True
             print(f"✗ {path.relative_to(ROOT)}")

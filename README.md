@@ -24,7 +24,7 @@ better-theme/
 ├── asset/
 │   └── icon/                     # 600+ 离线 SVG 图标（阿里图标库整理）
 └── scripts/
-    └── check-refs.py             # 文档卫生检查（交叉引用 / 换行符 / 行尾空白）
+    └── check-refs.py             # 文档卫生检查（交叉引用 / frontmatter / 换行符 / 行尾空白）
 ```
 
 **加载原则**：`SKILL.md` 是入口，`references/` 按需读。只加载当前任务真正需要的文件——纯配色任务不用读 `interaction.md`。
@@ -53,7 +53,7 @@ Hero + 三卡片 / 全页机械居中 / 所有组件统一一个大圆角 ——
 
 ## 维护
 
-改完文档跑一遍检查，确保交叉引用没有断、换行符统一：
+改完文档跑一遍检查，确保交叉引用没断、frontmatter 是合法 YAML、换行符统一：
 
 ```bash
 python3 scripts/check-refs.py

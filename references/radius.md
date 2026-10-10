@@ -1,5 +1,5 @@
 ---
-name: circle-angle
+name: radius
 description: "圆角风格化窗口设计"
 tags:
   - design
