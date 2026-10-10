@@ -14,7 +14,12 @@ design a landing page, improve UI aesthetics, or says things like
 > 附带资源，大量素材在 `/asset`
 
 > 如果你是网页版 AI，请访问
-> [GitHub](https://github.com/JinSuperOfficial/theme-plus/tree/main/asset/icon/)
+> [GitHub](https://github.com/JinSuperOfficial/better-theme/tree/main/asset/icon/)
+
+> 参考文档在 `references/`，按需加载，索引见 `references/README.md`：
+> `agent-guide.md`（优化流程与检查清单）、`color-theme.md`（配色）、`radius.md`（圆角）、
+> `copywriting.md`（文案）、`interaction.md`（动效与交互）、`cases/deepseek-glass.md`（玻璃拟态案例）。
+> 只读当前任务真正需要的文件，不要一次全读。
 
 ## About Better Fronted Pages
 
@@ -100,7 +105,7 @@ design a landing page, improve UI aesthetics, or says things like
 
 ## 界面设计
 
-当你设计圆角的时候，请*务必*使用在`references/circle_angle.md`
+当你设计圆角的时候，请*务必*使用 `references/radius.md`（圆角规范）
 
 根据颜色风格选择界面风格，例如按钮，不要盲目圆角。
 
@@ -159,7 +164,7 @@ Hero 区域可以使用居中布局，但不要让整个网站只有一种对齐
 
 ## 文本设计
 
-文字效果可以参考references/text.md
+文字效果可以参考 `references/copywriting.md`（文案参考）
 网站的文本必须做到：
 
 - **具体**：采用具体点的数字，而不是空洞的形容词堆积，例如“努力工作” -> “每天工作 8h，少走神”
@@ -212,10 +217,15 @@ Hero 区域可以使用居中布局，但不要让整个网站只有一种对齐
 
 ## 2. 参考文件加载策略
 
+`references/` 下的文档按需加载，索引见 `references/README.md`。
+
 - 默认遵循 `SKILL.md`。
+- 收到"优化这个页面"类任务、需要完整诊断流程或检查清单时加载 `references/agent-guide.md`。
 - 需要配色决策时加载 `references/color-theme.md`。
-- 需要圆角与组件形态参考时加载 `references/circle_angle.md`。
-- 文案需要具体例子时加载 `references/text.md`。
+- 需要圆角与组件形态参考时加载 `references/radius.md`。
+- 文案需要具体例子时加载 `references/copywriting.md`。
+- 需要动效、滚动、微交互、页面过渡或交互状态参考时加载 `references/interaction.md`。
+- 需要"玻璃拟态 + 流体背景 + Spring 动画"的完整落地代码时加载 `references/cases/deepseek-glass.md`。
 - 仅加载当前任务实际需要且确实存在的参考文件；不要引用不存在的文件或假设其中包含特定章节。
 - 如果用户指定品牌色，优先结合品牌规范与 `references/color-theme.md` 做适配。
 

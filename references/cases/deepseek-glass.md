@@ -1,7 +1,7 @@
 # DeepSeek 官网效果复刻（优化版）
 
 > 玻璃拟态 + WebGL 流体背景 + Spring 物理动画
-> 已对齐 `better-theme` 设计体系与 `circle_angle.md` 圆角规范
+> 已对齐 `better-theme` 设计体系与 `../radius.md` 圆角规范
 
 ---
 
@@ -19,7 +19,7 @@
 
 ## 1. 设计 Token（对齐圆角规范）
 
-原实现把卡片圆角设到 24px、面板 16px，超出了 `circle_angle.md` 的 macOS 克制取向。修正后：
+原实现把卡片圆角设到 24px、面板 16px，超出了 `../radius.md` 的 macOS 克制取向。修正后：
 
 ```css
 :root {
@@ -40,7 +40,7 @@
   --brand-deep: #3a65c2;
   --brand-ghost: hsla(222, 98%, 65%, 0.12);
 
-  /* ---------- 圆角（对齐 circle_angle.md） ---------- */
+  /* ---------- 圆角（对齐 ../radius.md） ---------- */
   --radius-xs: 4px;
   --radius-sm: 6px;
   --radius-md: 8px;
@@ -334,13 +334,13 @@ function useShrinkHeader() {
 }
 ```
 
-> `better-interaction` 反模式第 11 条：弹簧是 CPU 密集型，超过 10 个元素同时用 spring 应改按时长 + easeOut。顶栏只有一个，安全。
+> `../interaction.md` 第 10 节 反模式第 11 条：弹簧是 CPU 密集型，超过 10 个元素同时用 spring 应改按时长 + easeOut。顶栏只有一个，安全。
 
 ---
 
 ## 5. 光标环
 
-原实现用了 RAF + 指数缓动 + `mix-blend-mode: difference`，技术上干净。但 `better-interaction` 的反模式第 4 条是“鼠标移动跟随元素跑——变成鼠标玩具”。因此必须**限定适用场景**。
+原实现用了 RAF + 指数缓动 + `mix-blend-mode: difference`，技术上干净。但 `../interaction.md` 的反模式第 4 条是“鼠标移动跟随元素跑——变成鼠标玩具”。因此必须**限定适用场景**。
 
 ```tsx
 function CursorRing() {
@@ -418,7 +418,7 @@ body[data-hovering="true"] .cursor-ring {
 }
 ```
 
-**场景对照（`better-interaction` 动效强度表）：**
+**场景对照（`../interaction.md` 第 11 节 动效强度表）：**
 
 | 页面类型 | 光标跟随 | 本站是否启用 |
 |---|---|---|
@@ -518,15 +518,15 @@ src/
 
 | 模块 | 原文 | 优化后 | 依据 |
 |---|---|---|---|
-| 卡片圆角 | 16px / 24px | 10px / 12px | `circle_angle.md` |
+| 卡片圆角 | 16px / 24px | 10px / 12px | `../radius.md` |
 | 玻璃饱和度 | 180% | 130% | 避免过饱和 |
-| reduced-motion | 未处理 | 三处动效全部降级 | `better-interaction` §7 |
+| reduced-motion | 未处理 | 三处动效全部降级 | `../interaction.md` §7 |
 | 移动端 WebGL | 未降级 | DPR cap 1 | 性能守则 |
 | 光标环场景 | 未限定 | 仅品牌页 | 反模式 §4 |
-| Spring 参数 | 单一默认 | 三档分页面类型 | `better-interaction` §8 |
+| Spring 参数 | 单一默认 | 三档分页面类型 | `../interaction.md` §8 |
 | 动效 token | 未抽取 | 缓动 + 时长 token | 可维护性 |
 | 对比度验证 | 未提及 | 14:1（玻璃上） | WCAG AA |
-| `:focus-visible` | 未提及 | 2px 品牌描边 | `better-interaction` §7 |
+| `:focus-visible` | 未提及 | 2px 品牌描边 | `../interaction.md` §7 |
 | 静态降级 | 无 | CSS 渐变兜底 | 渐进增强 |
 
 ---
