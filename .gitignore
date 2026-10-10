@@ -1,0 +1,9 @@
+# Obsidian 仓库元数据（编辑器配置，不属于 Skill 内容）
+.obsidian/
+
+# 系统 / 编辑器垃圾
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
