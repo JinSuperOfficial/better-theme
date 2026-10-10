@@ -1,4 +1,16 @@
-# better-theme
+# AI-Skills: better-theme
+
+## Language / 语言
+
+| Language | File |
+| :--- | :--- |
+| English | [README-EN.md](readme/README-EN.md) |
+| 汉语（简体） | **README.md**（当前） |
+| 漢語（繁體） | [README-CN-HANT.md](readme/README-CN-HANT.md) |
+| 日本語 | [README-JP.md](readme/README-JP.md) |
+| español | [README-ES.md](readme/README-ES.md) |
+
+## 导语
 
 > 为网页前端生成具有独特美学的设计方案，避免千篇一律的 SaaS 模板风格。
 > An opinionated front-end design skill for AI agents.
@@ -11,7 +23,8 @@
 ```text
 better-theme/
 ├── SKILL.md                      # 入口：设计总纲 + 执行流程 + 严格模式
-├── README.md                     # 本文件
+├── README.md                     # 简体中文说明（本文件）
+├── readme/                       # 其它语言说明
 ├── references/                   # 按需加载的参考文档（见 references/README.md）
 │   ├── README.md                 # 索引：什么时候读哪一份
 │   ├── agent-guide.md            # 优化操作手册：判型 → 诊断 → 修正 → 检查清单
@@ -54,7 +67,7 @@ Hero + 三卡片 / 全页机械居中 / 所有组件统一一个大圆角 ——
 
 ## 维护
 
-改完文档跑一遍检查，确保交叉引用没断、frontmatter 是合法 YAML、换行符统一：
+改完文档跑一遍检查，确保交叉引用没断、frontmatter 是合法 YAML、语言表齐全、换行符统一：
 
 ```bash
 python3 scripts/check-refs.py

@@ -12,6 +12,8 @@
 3. 行尾空白与文件末尾多余空行
 4. YAML frontmatter：能否解析、name 是否 kebab-case、description 是否存在
    （有 PyYAML 时做严格解析，没有时退化为关键字检查）
+5. 语言表：根目录与 readme/ 下的 README 必须带 `## Language` 表，
+   且表中列出全部语言版本，防止某种语言的入口漏掉
 
 退出码：0 全绿，1 有问题。
 """
@@ -41,6 +43,16 @@ PATH_LIKE = re.compile(r"^(?:\.{0,2}/)?(?:[\w./-]*/)?[\w.-]+\.md$")
 
 # frontmatter 里的技能名必须是 kebab-case
 KEBAB = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+
+# 多语言 README 全家族：每个入口的语言表都要列全这些文件
+LANG_TABLE = re.compile(r"^##\s+Language\b")
+LANG_READMES = (
+    "README.md",
+    "README-EN.md",
+    "README-CN-HANT.md",
+    "README-JP.md",
+    "README-ES.md",
+)
 
 def md_files() -> list[Path]:
     return sorted(
@@ -98,6 +110,28 @@ def check_frontmatter(text: str) -> list[str]:
     return problems
 
 
+def check_language_table(path: Path, text: str) -> list[str]:
+    """根目录与 readme/ 下的 README 必须带一张列全所有语言的语言表。"""
+    if not path.name.startswith("README"):
+        return []
+    if not (path.parent == ROOT or path.parent.name == "readme"):
+        return []
+    lines = text.split("\n")
+    start = next((i for i, line in enumerate(lines) if LANG_TABLE.match(line)), None)
+    if start is None:
+        return ["  缺少 `## Language` 语言表"]
+    section: list[str] = []
+    for line in lines[start + 1:]:
+        if line.startswith("## "):
+            break
+        section.append(line)
+    blob = "\n".join(section)
+    missing = [name for name in LANG_READMES if name not in blob]
+    if missing:
+        return ["  语言表缺少条目：" + "、".join(missing)]
+    return []
+
+
 def check_hygiene(path: Path, text: str) -> list[str]:
     rel = path.relative_to(ROOT)
     problems: list[str] = []
@@ -124,6 +158,7 @@ def main() -> int:
             check_refs(path, text)
             + check_hygiene(path, text)
             + check_frontmatter(text)
+            + check_language_table(path, text)
         )
         if problems:
             failed = True
